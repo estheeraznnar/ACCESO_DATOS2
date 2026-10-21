@@ -10,7 +10,7 @@ import java.util.List;
 @Configuration
 public class Configuracion {
 
-    @Bean
+    /*@Bean
     public List<Persona> dameLista(){
         List<Persona> personaList = new ArrayList<>();
         Persona p = Persona.builder().id(1L).build();
@@ -30,6 +30,6 @@ public class Configuracion {
         personaList.add(p7);
 
         return  personaList;
-    }
+    }*/
 
 }
