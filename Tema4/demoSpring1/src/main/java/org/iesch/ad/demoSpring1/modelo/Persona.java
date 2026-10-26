@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.engine.jdbc.Size;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 //@Builder
@@ -23,6 +25,22 @@ public class Persona {
     String dni;
     String email;
 
+    private LocalDateTime createdAt;
+
     //@Basic
     //@Column
+
+    @PrePersist
+    public void preGuardar(){
+        this.createdAt = LocalDateTime.now();
+    }
+
+    @PostPersist
+    public void postguardar(){
+        System.out.println("se guarda la persona con ID: " + this.id);
+    }
+
+    @OneToOne(cascade = CascadeType.ALL)
+    Coche coche;
+
 }
