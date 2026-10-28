@@ -162,7 +162,7 @@ public class DemoSpring1Application implements CommandLineRunner {
 
 		 */
 
-		System.out.println("OneToOne");
+
 
 		/*
 		//Nueva persona
@@ -184,6 +184,8 @@ public class DemoSpring1Application implements CommandLineRunner {
 
 		 */
 
+		/*
+		System.out.println("OneToOne");
 		//Cargar en la BBDD la persona con el ID 11
 		Optional<Persona> persona = personaRepositorio.findById(26L);
 		if (persona.isPresent()){
@@ -195,6 +197,38 @@ public class DemoSpring1Application implements CommandLineRunner {
 		if (coche.isPresent()){
 			Coche c = coche.get();
 			System.out.println(c);
+		}
+
+		 */
+
+		System.out.println("OneToOne Bidireccional");
+
+		/*Persona persona = new Persona();
+		persona.setNombre("Jose");
+		persona.setApellidos("Pascual Sanchez");
+		persona.setDni("18779986P");
+		persona.setEmail("pepito@aa.es");
+
+		Coche coche =new Coche();
+		coche.setMatricula("9989 NTH");
+
+		persona.setCoche(coche);
+		coche.setPersona(persona);
+		personaRepositorio.save(persona);*/
+		System.out.println("Peta bidireccional");
+		Optional<Persona> persona = personaRepositorio.findById(28L);
+		if (persona.isPresent()){
+			Persona persona1 = persona.get();
+			System.out.println(persona1);
+
+		}
+		System.out.println("Peta bidireccional");
+		Optional<Coche> coche = cocheRepossitorio.findById(3L);
+		if (coche.isPresent()){
+			Coche coche1 = coche.get();
+			System.out.println(coche1);
+			System.out.println(coche1.getPersona().getApellidos());
+
 		}
 
 	}

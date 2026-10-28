@@ -1,5 +1,6 @@
 package org.iesch.ad.demoSpring1.modelo;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.engine.jdbc.Size;
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
 //@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+//@ToString
 @EqualsAndHashCode
 @Entity
 public class Persona {
@@ -41,6 +42,7 @@ public class Persona {
     }
 
     @OneToOne(cascade = CascadeType.ALL)
+            @JoinColumn(name = "coche_id", referencedColumnName = "id")
     Coche coche;
 
 }
