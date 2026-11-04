@@ -2,9 +2,13 @@ package org.iesch.ad.demoSpring1;
 
 import lombok.RequiredArgsConstructor;
 import org.iesch.ad.demoSpring1.modelo.Coche;
+import org.iesch.ad.demoSpring1.modelo.Curso;
 import org.iesch.ad.demoSpring1.modelo.Persona;
+import org.iesch.ad.demoSpring1.modelo.Student;
 import org.iesch.ad.demoSpring1.repositorio.CocheRepossitorio;
+import org.iesch.ad.demoSpring1.repositorio.CursoRepositorio;
 import org.iesch.ad.demoSpring1.repositorio.PersonaRepositorio;
+import org.iesch.ad.demoSpring1.repositorio.StudentRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
@@ -13,10 +17,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @SpringBootApplication
 //@RequiredArgsConstructor
@@ -43,6 +44,10 @@ public class DemoSpring1Application implements CommandLineRunner {
 	PersonaRepositorio personaRepositorio;
 	@Autowired
 	CocheRepossitorio cocheRepossitorio;
+	@Autowired
+	StudentRepositorio studentRepositorio;
+	@Autowired
+	CursoRepositorio cursoRepositorio;
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoSpring1Application.class, args);
@@ -215,7 +220,7 @@ public class DemoSpring1Application implements CommandLineRunner {
 		persona.setCoche(coche);
 		coche.setPersona(persona);
 		personaRepositorio.save(persona);*/
-		System.out.println("Peta bidireccional");
+		/*System.out.println("Peta bidireccional");
 		Optional<Persona> persona = personaRepositorio.findById(28L);
 		if (persona.isPresent()){
 			Persona persona1 = persona.get();
@@ -230,6 +235,27 @@ public class DemoSpring1Application implements CommandLineRunner {
 			System.out.println(coche1.getPersona().getApellidos());
 
 		}
+		 */
+
+
+		/*System.out.println("Many to many -> unidireccional");
+		Student student = new Student();
+		student.setNombre("Pepito Grillo");
+
+		Curso curso = new Curso();
+		Curso curso1 = new Curso();
+		Curso curso2 = new Curso();
+		curso.setNombre("Php");
+		curso1.setNombre("Spring");
+		curso2.setNombre("Python");
+
+		student.setCursos(Set.of(curso, curso1, curso2));
+		System.out.println(student);
+		studentRepositorio.save(student);*/
+
+		System.out.println("Many to many -> Bidireccional");
+
+
 
 	}
 }
